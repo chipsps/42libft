@@ -6,7 +6,7 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:21:17 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/16 14:52:37 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/29 20:26:11 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,16 @@ static char	**ft_split2(char *str, size_t num, size_t len)
 	size_t	i;
 	size_t	j;
 
+	i = 0;
+	j = 0;
 	av = ft_calloc((num + 1), sizeof(char *));
 	if (!av)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (str[i] && j < num)
-	{
-		if (i == 0 || str[i++ - 1] == '\0')
-		{
-			av[j++] = ft_strdup(&str[i++]);
-			if (!av[j - 1])
-			{
-				while (j > 0)
-					free(av[j-- - 1]);
-				free(av);
-				return (NULL);
-			}
-		}
-	}
+	else if (str[i] != '\0')
+		av[j++] = ft_strdup(&str[i]);
+	while (i++ < len)
+		if (str[i] != '\0' && str[i - 1] == '\0')
+			av[j++] = ft_strdup(&str[i]);
 	return (av);
 }
 
@@ -48,6 +39,8 @@ char	**ft_split(char const *s, char c)
 	size_t	num;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	str = ft_strdup(s);
 	len = ft_strlen(s);
 	num = 0;

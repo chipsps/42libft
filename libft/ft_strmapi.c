@@ -6,7 +6,7 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:21:17 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/19 19:26:05 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/29 20:27:42 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*str;
 	unsigned int	i;
 
+	if (!s || !f)
+		return (NULL);
 	i = -1;
 	str = ft_strdup(s);
-	if (!s || !f || !str)
+	if (!str)
 		return (NULL);
 	while (str[++i])
 		str[i] = (*f)(i, str[i]);

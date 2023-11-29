@@ -6,13 +6,13 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:10:06 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/09 17:11:28 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/27 16:53:54 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }

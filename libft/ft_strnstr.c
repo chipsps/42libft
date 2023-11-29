@@ -6,26 +6,23 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:16:52 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/10 17:00:54 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/29 19:39:53 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
+	if (len == 0 && (big == NULL || little == NULL))
+		return (NULL);
 	if (!*little)
 		return ((char *)big);
-	while (*big)
+	while (*big && ft_strlen(little) <= len--)
 	{
-		if (len < ft_strlen(little))
-			break ;
-		if (ft_strlen(big) < ft_strlen(little))
-			break ;
-		if (ft_memcmp(big, little, ft_strlen(little)) == 0)
+		if (!ft_strncmp(big, little, ft_strlen(little)))
 			return ((char *)big);
-		len--;
 		big++;
 	}
-	return (0);
+	return (NULL);
 }

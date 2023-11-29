@@ -6,47 +6,44 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:21:17 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/19 16:47:11 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/28 18:14:54 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_numlen(int n, int base)
+static int	digitcount(int n)
 {
 	size_t	i;
 
-	i = 0;
-	if (n <= 0)
+	i = 1;
+	while (n)
+	{
+		n /= 10;
 		i++;
-	while (n && i++)
-		n /= base;
+	}
 	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*str;
-	int			i;
-	const char	*digits;
+	int		i;
+	int		neg;
+	char	*res;
 
-	*digits = "0123456789";
-	i = ft_numlen(n, 10);
-	str = malloc((i + 1) * sizeof(char));
-	if (!str)
+	i = (n <= 0) + digitcount(n);
+	neg = n < 0;
+	res = malloc(sizeof(char) * i);
+	if (!res)
 		return (NULL);
-	str[i] = 0;
-	if (n == 0)
-		str[0] = '0';
-	if (n < 0)
-	{
-		str[0] = '-';
+	res[0] = '-';
+	res[--i] = '\0';
+	if (!neg)
 		n *= -1;
-	}
-	while (n)
+	while (--i >= neg)
 	{
-		str[--i] = digits[n % 10];
+		res[i] = (n % 10 * -1) + '0';
 		n /= 10;
 	}
-	return (str);
+	return (res);
 }

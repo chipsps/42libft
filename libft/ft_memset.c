@@ -6,7 +6,7 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:38:53 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/10 15:26:54 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/28 19:06:22 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
+	void	*start;
+
+	start = s;
 	while (n--)
 		*(char *)s++ = (unsigned char)c;
-	return (s);
+	return (start);
 }

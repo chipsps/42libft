@@ -6,7 +6,7 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:16:52 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/10 13:05:57 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/27 17:21:11 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ptr;
+	size_t	i;
 
-	ptr = 0;
-	while (*s)
-		if (*s == (unsigned char)c)
-			ptr = (char *)s++;
-	if (!c)
-		ptr = (char *)s++;
-	return (ptr);
+	i = ft_strlen(s);
+	while (i && s[i] != (char)c)
+		i--;
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

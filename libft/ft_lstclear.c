@@ -6,7 +6,7 @@
 /*   By: pchi <pchi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:21:17 by pchi              #+#    #+#             */
-/*   Updated: 2023/11/21 17:47:01 by pchi             ###   ########.fr       */
+/*   Updated: 2023/11/29 20:29:57 by pchi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
+	if (!lst || !del)
+		return ;
 	if ((*lst)->next)
 		ft_lstclear(&(*lst)->next, del);
 	ft_lstdelone(*lst, del);
